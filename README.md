@@ -2,8 +2,16 @@
 
 [See self-driving in action (Youtube)](https://youtu.be/BBwEF6WBUQs)
 
+
   A scaled down version of self-driving system using a RC car, Raspberry Pi, Arduino and open source software. The system uses a Raspberry Pi with a camera and an ultrasonic sensor as inputs, a processing computer that handles steering, object recognition (stop sign and traffic light) and distance measurement, and an Arduino board for RC car control.
+
+### AIM
+ A presentable autonomous RC car for presenting at [MEC Labs](http://www.excelmec.org/excel2017/).
   
+### Credits
+ The actual project is povided by [hamuchiwa](https://github.com/hamuchiwa) at [https://github.com/hamuchiwa/AutoRCCar]
+
+
 ### Dependencies
 * Raspberry Pi: 
   - Picamera
