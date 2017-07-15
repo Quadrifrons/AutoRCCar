@@ -285,21 +285,29 @@ class VideoStreamHandler(SocketServer.StreamRequestHandler):
         finally:
             print "Connection closed on thread 1"
 
-
+# This is the ThreadServer() class
+# We create two threads
+# 1: distance_thread which creates a thread for-->server_thread2()-->which handles ultrasonic sensor input (SensorDataHandler())
+# 2: video_thread which creates a thread for --> server_thread() --> which handles video input (VideoStreamHandler())
 class ThreadServer(object):
-
+    
+    # Here we just define functions for setting up the server
     def server_thread(host, port):
+        # The following line makes the server and ask VideoStreamHandler() to handle it
         server = SocketServer.TCPServer((host, port), VideoStreamHandler)
-        server.serve_forever()
+        server.serve_forever() # ask server to listen until a shutdown request is pushed
 
     def server_thread2(host, port):
         server = SocketServer.TCPServer((host, port), SensorDataHandler)
         server.serve_forever()
-
-    distance_thread = threading.Thread(target=server_thread2, args=('192.168.1.100', 8002))
-    distance_thread.start()
+        
+    # This is were the threads and created
+    distance_thread = threading.Thread(target=server_thread2, args=('192.168.1.100', 8002)) # Threads are initialised with arguments
+    distance_thread.start() # Thread will be started
     video_thread = threading.Thread(target=server_thread('192.168.1.100', 8000))
     video_thread.start()
 
+# The program when called will start here, which does nothing other than calling ThreadServer() class. 
+# See the ThreadServer() class right above this.
 if __name__ == '__main__':
     ThreadServer()
