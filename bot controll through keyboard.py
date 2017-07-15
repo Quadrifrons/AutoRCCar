@@ -27,7 +27,7 @@ screen = curses.initscr()
 curses.noecho() 
 curses.cbreak()
 screen.keypad(True)
-GPIO.output(7,False)
+GPIO.output(7,False)#ensuring that there is no output before keys are pressed
 GPIO.output(12,False)
 GPIO.output(13,False)
 GPIO.output(16,False)
@@ -37,10 +37,10 @@ try:
             if char == ord('q'):
                 break
             elif char == curses.KEY_UP:
-                GPIO.output(7,True)
+                GPIO.output(7,True)#instruct to power motor one forward
                 GPIO.output(12,False)
                 GPIO.output(13,False)
-                GPIO.output(16,True)           
+                GPIO.output(16,True) #instructs to power motor2 forward          
                 
                 print" up"
             elif char == curses.KEY_DOWN:
