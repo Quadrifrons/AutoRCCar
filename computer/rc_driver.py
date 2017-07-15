@@ -1,13 +1,27 @@
 __author__ = 'zhengwang'
 
 import threading
+#Threading in python is used to run multiple threads (tasks, function calls) at the same time. Note that this does not mean that they
+# are executed on different CPUs. Python threads are used in cases where the execution of a task involves some waiting.
+# One example would be interaction with a service hosted on another computer, such as a webserver. Threading allows python to execute 
+#other code while waiting; this is easily simulated with the sleep function.
 import SocketServer
+#sockets are the fundamental "things" behind any kind of network communications done by your computer. For example when you type www.google.com 
+#in your web browser, it opens a socket and connects to google.com to fetch the page and show it to you. Same with any chat client like
+# gtalk or skype. Any network communication goes through a socket.
 import serial
+#To activate serial ports and serial communication.While such interfaces as Ethernet, FireWire, and USB all send data as a serial stream,
+# the term "serial port" usually identifies hardware more or less compliant to the RS-232 standard, intended to interface with a modem
+# or with a similar communication device.
 import cv2
+#cv2 is the library for opencv which deals with the processing of the images obtained from picam 
 import numpy as np
+#(NUM-pee)) is a library for the Python programming language, adding support for large, multi-dimensional arrays and matrices, 
+#along with a large collection of high-level mathematical functions to operate on these arrays. 
 import math
+# It provides access to the mathematical functions defined by the C standard.
 
-# distance data measured by ultrasonic sensor
+# distance data measured by ultrasonic sensor(?)
 sensor_data = " "
 
 
