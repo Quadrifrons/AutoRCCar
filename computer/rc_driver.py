@@ -43,7 +43,8 @@ class NeuralNetwork(object):
 class RCControl(object):
 
     def __init__(self):
-        self.serial_port = serial.Serial('/dev/tty.usbmodem1421', 115200, timeout=1)
+        self.serial_port = serial.Serial('/dev/tty.usbmodem1421', 115200, timeout=1) #here u have to change it as the data is send on to 
+                                                                                      #the program on pi
 
     def steer(self, prediction):
         if prediction == 2:
