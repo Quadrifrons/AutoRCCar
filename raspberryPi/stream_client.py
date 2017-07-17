@@ -26,7 +26,7 @@ try:
         stream = io.BytesIO()
         
         # send jpeg format video stream
-        for foo in camera.capture_continuous(stream, 'jpeg', use_video_port = True):
+        for foo in camera.capture_continuous(stream, 'jpeg', use_video_port = True): # condition statement toggle video
             connection.write(struct.pack('<L', stream.tell()))
             connection.flush()
             stream.seek(0)
