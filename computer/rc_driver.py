@@ -290,10 +290,10 @@ class VideoStreamHandler(SocketServer.StreamRequestHandler):
 # We create two threads
 # 1: distance_thread which creates a thread for-->server_thread2()-->which handles ultrasonic sensor input (SensorDataHandler())
 # 2: video_thread which creates a thread for --> server_thread() --> which handles video input (VideoStreamHandler())
-class ThreadServer(object):
+class ThreadServer(object):#object is simply given to add functionalities introduced after python 2.2
     
     # Here we just define functions for setting up the server
-    def server_thread(host, port):
+    def server_thread(host, port):#
         # The following line makes the server and ask VideoStreamHandler() to handle it
         server = SocketServer.TCPServer((host, port), VideoStreamHandler)
         server.serve_forever() # ask server to listen until a shutdown request is pushed
@@ -301,7 +301,8 @@ class ThreadServer(object):
     def server_thread2(host, port):
         server = SocketServer.TCPServer((host, port), SensorDataHandler)
         server.serve_forever()
-        
+                                                                                         #here we need to add the thread to send instructions 
+                                                                                            #to pi
     # This is were the threads and created
     distance_thread = threading.Thread(target=server_thread2, args=('192.168.1.100', 8002)) # Threads are initialised with arguments
     distance_thread.start() # Thread will be started
@@ -310,5 +311,5 @@ class ThreadServer(object):
 
 # The program when called will start here, which does nothing other than calling ThreadServer() class. 
 # See the ThreadServer() class right above this.
-if __name__ == '__main__':
+if __name__ == '__main__':#this will return false if this code is imported and run in another program
     ThreadServer()
