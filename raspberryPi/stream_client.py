@@ -6,14 +6,14 @@ https://picamera.readthedocs.org/en/release-1.10/recipes2.html
 """
 
 import io
-import socket
+import sock yuet
 import struct
 import time
 import picamera
 
 
 # create socket and bind host
-client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # connection based protocol
 client_socket.connect(('192.168.1.100', 8000))
 connection = client_socket.makefile('wb')
 
