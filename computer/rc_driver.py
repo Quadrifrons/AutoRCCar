@@ -295,7 +295,9 @@ class ThreadServer(object):#object is simply given to add functionalities introd
     # Here we just define functions for setting up the server
     def server_thread(host, port):#
         # The following line makes the server and ask VideoStreamHandler() to handle it
-        server = SocketServer.TCPServer((host, port), VideoStreamHandler)
+        server = SocketServer.TCPServer((host, port), VideoStreamHandler)              #host is the adress on which the server is 
+                                                                                        #listening.when connected,VideoStreamHandler
+                                                                                         #is called
         server.serve_forever() # ask server to listen until a shutdown request is pushed
 
     def server_thread2(host, port):
