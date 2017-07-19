@@ -22,7 +22,7 @@ import math
 # It provides access to the mathematical functions defined by the C standard.
 
 # distance data measured by ultrasonic sensor(?)
-sensor_data = " "
+sensor_data = " " #declaring a variable
 
 
 class NeuralNetwork(object):
@@ -139,25 +139,30 @@ class ObjectDetection(object):
                     #    cv2.putText(image, 'Yellow', (x_pos+5, y_pos - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 255), 2)
                     #    self.yellow_light = True
         return v
+####################### UNCLARIFIED DOUBTS
 
+class SensorDataHandler(SocketServer.BaseRequestHandler):#inheriting Baserequest handler provides fuctions and variables to the class
+                                                         #which can be used to send and receive data through the socket.base requset uses 
+                                                         #recv.() which on a single call receives what has been sent from the client on
+                                                         #by a single sendall() call        
 
-class SensorDataHandler(SocketServer.BaseRequestHandler):
+    data = " "                                         #declaring a variable data
 
-    data = " "
-
-    def handle(self):
-        global sensor_data
+    def handle(self):                                  #defining function handle.as aconvention self is given as the first parameter in 
+                                                       #most functions
+        global sensor_data                             #making sensor data global
         try:
             while self.data:
                 self.data = self.request.recv(1024)
-                sensor_data = round(float(self.data), 1)
+                sensor_data = round(float(self.data), 1)            #2.675-->2.67
                 #print "{} sent:".format(self.client_address[0])
                 print sensor_data
         finally:
             print "Connection closed on thread 2"
+#########################
 
-
-class VideoStreamHandler(SocketServer.StreamRequestHandler):
+class VideoStreamHandler(SocketServer.StreamRequestHandler):#streamRequest handler provides readline() which calls recv() multiple times 
+                                                            #till a new line character is received.used for large data.
 
     # h1: stop sign
     h1 = 15.5 - 10  # cm
