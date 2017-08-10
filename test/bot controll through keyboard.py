@@ -1,6 +1,7 @@
 # import curses and GPIO
 import curses
 import RPi.GPIO as GPIO
+import time
 #GPIO is used for raspberry pi pin control
 
 #set GPIO numbering mode and define output pins
@@ -32,7 +33,12 @@ GPIO.output(12,False)
 GPIO.output(13,False)
 GPIO.output(16,False)
 try:
-        while True:   
+        while True: 
+        time.sleep(.030)        
+        GPIO.output(7,False)    
+        GPIO.output(12,False)
+        GPIO.output(13,False)
+        GPIO.output(16,False)
             char = screen.getch()
             if char == ord('q'):
                 break
