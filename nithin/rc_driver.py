@@ -305,10 +305,11 @@ class ThreadServer(object):
         server = SocketServer.TCPServer((host, port), SensorDataHandler)
         server.serve_forever()
 
-    distance_thread = threading.Thread(target=server_thread2, args=(host, 8002))
-    print "Sensor thread starting"
-    distance_thread.start()
-    print "Sensor thread started"
+	# =-----Commenting out sensor 
+    #distance_thread = threading.Thread(target=server_thread2, args=(host, 8002))
+    #print "Sensor thread starting"
+    #distance_thread.start()
+    #print "Sensor thread started"
     video_thread = threading.Thread(target=server_thread(host, 8000))
     video_thread.start()
     print "Video server started"
