@@ -19,7 +19,7 @@ class NeuralNetwork(object):
 
     def create(self):
         layer_size = np.int32([38400, 32, 4])
-        self.model.setLayerSizes(layer_size)
+        self.model = cv2.ANN_MLP(layer_size)
         self.model.load('mlp_xml/mlp.xml')
 
     def predict(self, samples):
@@ -66,7 +66,7 @@ class RCControl(object):
             self.stop()
 
     def stop(self):
-        conn.sendall(str.encode("stop"))
+        conn.sendall(str.encode("r"))
 
 
 class DistanceToCamera(object):
@@ -298,8 +298,8 @@ class VideoStreamHandler(SocketServer.StreamRequestHandler):
 class ThreadServer(object):
 
     def server_thread(host, port):
+	print "Waiting for video client ..."
         server = SocketServer.TCPServer((host, port), VideoStreamHandler)
-        print "Video server listening"
 	server.serve_forever()
 
     def server_thread2(host, port):
@@ -313,7 +313,6 @@ class ThreadServer(object):
     #print "Sensor thread started"
     video_thread = threading.Thread(target=server_thread(host, 8000)) # Change the port no. in stream_cient to 8000
     video_thread.start()
-    print "Video server started"
 
 if __name__ == '__main__':
     print "Starting program"
