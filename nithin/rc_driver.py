@@ -1,4 +1,4 @@
-__author__ = 'zhengwang'
+__author__ = 'Quadrifrons'
 
 import threading
 import SocketServer
@@ -173,7 +173,7 @@ class VideoStreamHandler(SocketServer.StreamRequestHandler):
 
     # create neural network
     model = NeuralNetwork()
-#    model.create()
+    model.create()
 
     obj_detection = ObjectDetection()
     rc_car = RCControl()
