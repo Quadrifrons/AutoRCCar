@@ -3,7 +3,7 @@ __author__ = 'zhengwang'
 import threading
 import SocketServer
 import socket
-import serial
+#import serial
 import cv2
 import numpy as np
 import math
@@ -31,12 +31,12 @@ class RCControl(object):
 
     def __init__(self):
      host=''
-     port=5506
+     port=5560
      s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
      s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
      print("Control Socket created.")
      try:
-         s.bind(('', 5506))
+         s.bind(('', 5560))
      except socket.error as msg:
          print(msg)
 	 print "Error here"
@@ -74,8 +74,8 @@ class DistanceToCamera(object):
     def __init__(self):
         # camera params
         self.alpha = 8.0 * math.pi / 180
-        self.v0 = 119.865631204
-        self.ay = 332.262498472
+        self.v0 = 539.418318316#119.865631204
+        self.ay = 1196.63929149#332.262498472
 
     def calculate(self, v, h, x_shift, image):
         # compute and return the distance from the target point to the camera
