@@ -311,7 +311,7 @@ class ThreadServer(object):
     #print "Sensor thread starting"
     #distance_thread.start()
     #print "Sensor thread started"
-    video_thread = threading.Thread(target=server_thread(host, 8000)) # Change the port no. in stream_cient to 8000
+    video_thread = threading.Thread(target=server_thread(host, 8001)) # Change the port no. in stream_cient to 8000
     video_thread.start()
 
 if __name__ == '__main__':
