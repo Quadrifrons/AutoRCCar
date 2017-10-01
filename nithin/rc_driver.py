@@ -10,7 +10,7 @@ import math
 
 # distance data measured by ultrasonic sensor
 sensor_data = " "
-host='192.168.1.34'
+host=''
 
 class NeuralNetwork(object):
 
